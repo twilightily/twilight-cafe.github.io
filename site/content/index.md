@@ -25,6 +25,7 @@ I'm currently a second year CSE student at [PES University](pes.edu). I'm part o
 
 So far most of my work has been a really nice blend of both design and tech. For example, I built and deployed my first web app on Streamlit called [Wordle Unhinged](https://github.com/twilightily/wordle-unhinged), a fun twist to the classic Wordle. I also was a mentee at 
 Tilde 5.0 (a summer mentorship program conducted by Homebrew) where I built [MuSSHroom](https://github.com/homebrew-foss/muSSHroom), an SSH chat server written in Go with a VERY pretty TUI created using [BubbleTea](https://github.com/charmbracelet/bubbletea) framework 
+Right now, I'm into exploring networks, I'm creating small things here and there like a network diagnosis tool written in python which can be tested on a mininet topology or coding theory with a linear algebra application of how integrity check is done with parity matrices. I'm currently starting to create my own netstack purely for fun xd
 
 <br>
 

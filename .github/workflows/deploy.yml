@@ -1,46 +1,10 @@
-name: Build and Deploy Site
-
-on:
-  push:
-    branches:
-      - main  # Change this to 'master' if your main branch is called master
-  workflow_dispatch: # Allows you to manually trigger the build if needed
-
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
-jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Execute Build Script
-        run: |
-          chmod +x deploy.sh
-          bash deploy.sh
-
-      - name: Upload Artifacts
-        uses: actions/upload-pages-artifact@v3
+      - name: Setup Go
+        uses: actions/setup-go@v5
         with:
-          # Anna SSG outputs its generated site files to site/rendered
-          path: './site/rendered'
+          go-version: 'stable'
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Install Stable Anna
+        run: go install https://github.com/anna-ssg/anna
+
+      - name: Build Website
+        run: anna

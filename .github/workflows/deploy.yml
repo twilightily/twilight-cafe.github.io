@@ -35,8 +35,10 @@ jobs:
         with:
           go-version-file: "./go.mod"
 
-      - name: build site with anna
-        run: go run .
+      - name: Download and Build Site with Anna
+        run: |
+          curl -sSL https://githubusercontent.com | bash
+
 
       - name: upload /rendered
         uses: actions/upload-artifact@master

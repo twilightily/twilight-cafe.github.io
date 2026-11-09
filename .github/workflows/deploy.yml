@@ -37,7 +37,7 @@ jobs:
 
       - name: Download and Build Site with Anna
         run: |
-          curl -sSL https://githubusercontent.com | bash
+          curl -sSL https://githubusercontent.com/anna-ssg/anna/main/deploy.sh | bash
 
 
       - name: upload /rendered

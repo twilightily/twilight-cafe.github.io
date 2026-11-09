@@ -33,7 +33,7 @@ jobs:
       - name: setup go
         uses: actions/setup-go@v5
         with:
-          go-version-file: "go.mod"
+          go-version: "1.21"
 
       - name: build site with anna
         run: go run .

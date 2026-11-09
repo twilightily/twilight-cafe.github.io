@@ -23,13 +23,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Go
-        uses: actions/setup-go@v5
-        with:
-          go-version: 'stable'
-
-      - name: Install Stable Anna
-        run: go install github.com/anna-ssg/anna@v4.0.0
+      # Bypasses Go entirely and safely grabs the pre-compiled v0.4.0 executable
+      - name: Download Stable Anna Binary
+        run: |
+          curl -L -o anna.tar.gz https://anna.ssg.dev/releases/latest/download/anna_$(uname -s)_$(uname -m).tar.gz
+          tar -xzf anna.tar.gz
+          chmod +x anna
+          sudo mv anna /usr/local/bin/
 
       - name: Build Website
         run: anna

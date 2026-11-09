@@ -1,21 +1,16 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO="anna-ssg/anna"
-ARCH="Linux_x86_64"
+# Breaking the URL into tiny pieces so it does not get cut off by the text box
+HOST="https://github.com"
+PATH="/anna-ssg/anna/releases/download"
+FILE="/v4.0.0/anna_Linux_x86_64.tar.gz"
 
-# Hardcode the working version to bypass GitHub's pre-release bug
-VERSION="v4.0.0"
+FULL_URL="${HOST}${PATH}${FILE}"
 
-echo "Selected Stable Release Version: $VERSION"
-TARBALL="anna_${ARCH}.tar.gz"
-URL="https://github.com\$REPO/releases/download/\$VERSION/\$TARBALL"
-
-
-# Download and extract safely
-echo "Downloading $URL..."
-if ! curl -sSLf -L "$URL" | tar -xz; then
-  echo "Error: Failed to download or extract the binary from $URL"
+echo "Downloading Anna v4.0.0..."
+if ! curl -sSLf -L "$FULL_URL" | tar -xz; then
+  echo "Error: Failed to download or extract the binary"
   exit 1
 fi
 
@@ -24,7 +19,6 @@ if [[ ! -f anna ]]; then
   exit 1
 fi
 
-# Make executable and run build
 chmod +x anna 
 echo "Running anna build engine..."
 ./anna
